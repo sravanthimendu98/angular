@@ -1,0 +1,102 @@
+<h3 style="text-align: center;">Template-form-validation</h3>
+<form class="needs-validation" novalidate style="margin: 70px;" #userForm="ngForm">
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="validationCustom01">First name</label>
+      <input type="text" class="form-control" #firstName="ngModel" name="firstName" [(ngModel)]="userObj.firstName"
+        placeholder="First name" minlength="3" required>
+      <div class="text-danger"
+        *ngIf="(firstName.invalid || (firstName.touched || firstName.dirty)) && (isFormSubmitted && firstName.invalid)">
+        <span *ngIf="firstName.errors?.['required']">First name is required</span>
+        <span *ngIf="firstName.errors?.['minlength']">Enter min 3 characters</span>
+      </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationCustom02">Last name</label>
+      <input type="text" class="form-control" name="lastName" #lastName="ngModel" [(ngModel)]="userObj.lastName"
+        id="validationCustom02" placeholder="Last name" minlength="3" required>
+      <div class="text-danger"
+        *ngIf="(lastName.invalid && (lastName.touched || lastName.dirty)) || (isFormSubmitted && lastName.invalid)">
+        <span *ngIf="lastName.errors?.['required']">Last name is required</span>
+        <span *ngIf="lastName.errors?.['minlength']">Enter min 3 characters</span>
+
+      </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationCustomUsername">Email</label>
+      <input type="email" class="form-control" name="email" #email="ngModel" [(ngModel)]="userObj.email"
+        pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" placeholder="Email"
+        aria-describedby="inputGroupPrepend" required>
+      <div class="text-danger"
+        *ngIf="(email.invalid && (email.touched || email.dirty)) || (isFormSubmitted && email.invalid)">
+        <span *ngIf="email.errors?.['required']">Email is required</span>
+        <span *ngIf="email.errors?.['pattern']">Email pattern is wrong</span>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="validationCustom03">City</label>
+      <input type="text" class="form-control" name="city" #city="ngModel" [(ngModel)]="userObj.city"
+        id="validationCustom03" placeholder="City" required>
+      <div class="text-danger"
+        *ngIf="(city.invalid && (city.touched || city.dirty)) || (isFormSubmitted && city.invalid)">
+        <span *ngIf="city.errors?.['required']">City is required</span>
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationCustom04">State</label>
+      <input type="text" class="form-control" name="state" #state="ngModel" [(ngModel)]="userObj.state"
+        id="validationCustom04" placeholder="State" required>
+      <div class="text-danger"
+        *ngIf="(state.invalid && (state.touched || state.dirty)) || (isFormSubmitted && state.invalid)">
+        <span *ngIf="state.errors?.['required']">State is required</span>
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationCustom05">Zip Code</label>
+      <input type="text" class="form-control" name="zipCode" #zipCode="ngModel" [(ngModel)]="userObj.zipCode"
+        id="validationCustom05" placeholder="Zip Code" required>
+      <div class="text-danger"
+        *ngIf="(zipCode.invalid && (zipCode.touched || zipCode.dirty)) || (isFormSubmitted && zipCode.invalid)">
+        <span *ngIf="zipCode.errors?.['required']">Zipcode is required</span>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" name="isAgree" #isAgree="ngModel"
+        [(ngModel)]="userObj.isAgree" id="invalidCheck" required>
+      <label class="form-check-label" for="invalidCheck">
+        Agree to terms and conditions
+      </label>
+      <div class="text-danger"
+        *ngIf="(isAgree.invalid && (isAgree.touched || isAgree.dirty)) || (isFormSubmitted && isAgree.invalid)">
+        <span *ngIf="isAgree.errors?.['required']">You must agree before submitting</span>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary" type="button" (click)="onSubmit(userForm)">Submit form</button>
+</form>
+
+
+<!-- <script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.getElementsByClassName('needs-validation');
+      // Loop over them and prevent submission
+      var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+  })();
+  </script> -->
