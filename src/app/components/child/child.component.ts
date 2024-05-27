@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, OnChanges, SimpleChange, SimpleChanges, DoCheck, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChange, SimpleChanges, DoCheck, Output, EventEmitter,
+ } from '@angular/core';
 
 @Component({
   selector: 'app-child',
@@ -12,8 +13,15 @@ export class ChildComponent implements OnInit, OnChanges, DoCheck {
 
   @Input() parentMessage: string | undefined;
 
+  @Output() messageChange = new EventEmitter<string>();
+
+  message: string = 'message from child'
+
+  constructor() {}
+
   updateMessage() {
-    this.parentMessage = "hello"
+    this.parentMessage = "hello";
+    this.messageChange.emit(this.parentMessage);
     console.log(this.parentMessage, 'newmesage');
 
   }

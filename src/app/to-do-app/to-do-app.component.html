@@ -1,0 +1,13 @@
+<div class="input-group container" style="margin-top: 50px;">
+    <h5>Parent Component : </h5>
+    <input type="text" #input >
+    <button type="button" class="btn btn-primary" (click)="addList(input)">Add</button>
+</div>
+<div>
+    <ul>
+        <li *ngFor="let data of display">{{data}}</li>
+    </ul>
+</div>
+<div>
+    {{serviceData.parentData}}
+</div>

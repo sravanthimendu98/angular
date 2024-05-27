@@ -1,9 +1,9 @@
 <main>
     <div>
         <p>{{myNumber}}</p>
-        <p>{{this.changeUser.name}}</p>
+        <p>{{changeUser.name}}</p>
 
-        <p>Parent Component Message: {{ this.parentMessage }}</p>
+        <p>child Component: {{ this.parentMessage }}</p>
 
         <button (click)="updateMessage()">change message</button>
     </div>

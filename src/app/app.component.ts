@@ -5,17 +5,19 @@ import { RouterModule } from '@angular/router';
 import { ChildComponent } from './components/child/child.component';
 import { TemplateFormValidationComponent } from "./components/template-form-validation/template-form-validation.component";
 import { ReactiveFormValidationComponent } from "./components/reactive-form-validation/reactive-form-validation.component";
+import { ToDoListComponent } from "./to-do-list/to-do-list.component";
+import { ToDoAppComponent } from "./to-do-app/to-do-app.component";
 
 @Component({
-    selector: 'app-root',
-    standalone: true,
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css'],
-    imports: [FormsModule, CommonModule,RouterModule, ChildComponent, TemplateFormValidationComponent, ReactiveFormValidationComponent]
+  selector: 'app-root',
+  standalone: true,
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  imports: [FormsModule, CommonModule, RouterModule, ChildComponent, TemplateFormValidationComponent, ReactiveFormValidationComponent, ToDoListComponent, ToDoAppComponent]
 })
 export class AppComponent {
 
-  @ViewChild(ChildComponent) childComponent!: ChildComponent;
+  @ViewChild(ChildComponent) ChildComponent !: ChildComponent;
 
   title = 'myNewApp';
   number = 1;
@@ -29,10 +31,22 @@ export class AppComponent {
   price: any = 2;
   condition: boolean = false;
   currentView: string = '';
-
   isActive: boolean = true;
   isDisabled: boolean = false;
+  message: string = ''
 
+  constructor(private detector: ChangeDetectorRef) { }
+
+  ngAfterViewInit() {
+    console.log(this.ChildComponent.message, 'this.ChildComponent.message');
+    this.message = this.ChildComponent.message;
+    this.detector.detectChanges();
+  }
+
+  onMessageChange(newMessage: string) {
+    console.log("newMessage after the child update", newMessage);
+    this.newMessage = newMessage;
+  }
 
   toggleActive() {
     console.log("active");

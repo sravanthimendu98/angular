@@ -1,0 +1,12 @@
+<div class="container">
+    <ul>
+        <h5>Child Component:</h5><li *ngFor="let list of toDoList">  {{list}}</li>
+    </ul>
+</div>
+
+<div>
+    <button type="button" class="btn btn-primary" (click)="onClick()">Click</button>
+</div>
+<div style="margin-top: 10px;">
+    <button type="button" class="btn btn-primary" (click)="dataToParent()">Data from child-service-parent</button>
+</div>

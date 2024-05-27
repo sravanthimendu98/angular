@@ -23,12 +23,17 @@
 
 <!-- Router outlet to display routed components -->
 <router-outlet></router-outlet>
+<app-to-do-app></app-to-do-app>
+<app-to-do-list></app-to-do-list>
 
 
-<!-- <div style="text-align: center; margin-top: 50px;">
+
+<div style="text-align: center; margin-top: 50px;">
   <h3>Welcome to {{name}}</h3>
   <h3>Welcome to {{topic}}</h3>
   <img [src]="image" />
+
+  <div>Message from child : {{message}}</div>
 
   <br>
 
@@ -48,13 +53,16 @@
     <button (click)="updateDirect()">Update Direct</button>
     <button (click)="updateReassign()">Update Reassign</button>
   </div>
-  <app-child *ngIf="visibility" [myNumber]="number" [changeUser]="user" [parentMessage]="newMessage"></app-child>
+  <p>parent componnet: {{newMessage}} </p>
+  <app-child *ngIf="visibility"
+   [myNumber]="number" [changeUser]="user" [parentMessage]="newMessage"
+  (messageChange)="onMessageChange($event)"></app-child>
   <br>
   <button (click)="switchVisibility()">Show/Hide</button>
 
   <div style="margin-top: 50px; margin-bottom: 50px;">
     <div>
-      <h3>Directives ng-model</h3>
+      <h5>Directives ng-model</h5>
       Quantity: <input type="number" [(ngModel)]="quantity">
       Costs: <input type="number" [(ngModel)]="price">
     </div>
@@ -65,15 +73,15 @@
 
   <div style="margin-top: 50px;">
     <div style="margin-top: 3%;">
-      <h3>Directives ngFor</h3>
+      <h5>Directives ngFor</h5>
       <ul>
         <li *ngFor="let product of products">{{product.name}}</li>
       </ul>
     </div>
   </div>
 
-  <div>
-    <h3>Directive ngIf</h3>
+  <div style="margin-top: 50px; margin-bottom: 50px;">
+    <h5>Directive ngIf</h5>
     <button (click)="displayContent()">Content to display</button>
     <div *ngIf="condition">
       <p>This content is conditionally displayed.</p>
@@ -81,7 +89,7 @@
   </div>
 
   <div>
-    <h3> Directive ngSwitch</h3>
+    <h5> Directive ngSwitch</h5>
     <button (click)="currentView = 'home'">Home</button>
     <button (click)="currentView = 'about'">About</button>
     <button (click)="currentView = 'contact'">Contact</button>
@@ -103,15 +111,15 @@
   </div>
   
 
-  <div>
+  <div style="margin-top: 50px; margin-bottom: 50px;">
     <button (click)="toggleActive()">toggle active</button>
     <button (click)="toggleIsDisabled()">toggle Disabled</button>
 
     <div [ngClass]="{'active' : isActive, 'disabled': isDisabled}">
-      <h3>toggle clicks</h3>
+      <p>toggle clicks</p>
     </div>
 
   </div>
   
 
-</div> -->
+</div>
