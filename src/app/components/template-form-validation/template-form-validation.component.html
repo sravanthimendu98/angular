@@ -1,4 +1,4 @@
-<h3 style="text-align: center;">Template-form-validation</h3>
+<h3 style="text-align: center;">Template form validation</h3>
 <form class="needs-validation" novalidate style="margin: 70px;" #userForm="ngForm">
   <div class="form-row">
     <div class="col-md-4 mb-3">
@@ -35,7 +35,7 @@
     </div>
   </div>
   <div class="form-row">
-    <div class="col-md-6 mb-3">
+    <div class="col-md-4 mb-3">
       <label for="validationCustom03">City</label>
       <input type="text" class="form-control" name="city" #city="ngModel" [(ngModel)]="userObj.city"
         id="validationCustom03" placeholder="City" required>
@@ -44,7 +44,7 @@
         <span *ngIf="city.errors?.['required']">City is required</span>
       </div>
     </div>
-    <div class="col-md-3 mb-3">
+    <div class="col-md-4 mb-3">
       <label for="validationCustom04">State</label>
       <input type="text" class="form-control" name="state" #state="ngModel" [(ngModel)]="userObj.state"
         id="validationCustom04" placeholder="State" required>
@@ -53,7 +53,7 @@
         <span *ngIf="state.errors?.['required']">State is required</span>
       </div>
     </div>
-    <div class="col-md-3 mb-3">
+    <div class="col-md-4 mb-3">
       <label for="validationCustom05">Zip Code</label>
       <input type="text" class="form-control" name="zipCode" #zipCode="ngModel" [(ngModel)]="userObj.zipCode"
         id="validationCustom05" placeholder="Zip Code" required>

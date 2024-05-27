@@ -1,4 +1,4 @@
-<h3 style="text-align: center;">Reactive-form-validation</h3>
+<h3 style="text-align: center;">Reactive form validation</h3>
 
 <form class="needs-validation" style="margin: 70px;" [formGroup]="userForm" novalidate>
     <div class="form-row">
@@ -34,7 +34,7 @@
         </div>
     </div>
     <div class="form-row">
-        <div class="col-md-6 mb-3">
+        <div class="col-md-4 mb-3">
             <label for="validationCustom03">City</label>
             <input type="text" class="form-control" formControlName="city" id="validationCustom03" placeholder="City"
                 required>
@@ -43,7 +43,7 @@
                 <span *ngIf="userForm.controls['city'].errors?.['required']">City is required</span>
             </div>
         </div>
-        <div class="col-md-3 mb-3">
+        <div class="col-md-4 mb-3">
             <label for="validationCustom04">State</label>
             <input type="text" class="form-control" formControlName="state" id="validationCustom04" placeholder="State"
                 required>
@@ -52,7 +52,7 @@
                 <span *ngIf="userForm.controls['state'].errors?.['required']">State is required</span>
             </div>
         </div>
-        <div class="col-md-3 mb-3">
+        <div class="col-md-4 mb-3">
             <label for="validationCustom05">Zip</label>
             <input type="text" class="form-control" formControlName="zipCode" id="validationCustom05" placeholder="Zip"
                 required>
