@@ -1,0 +1,117 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/templateFormValidation" routerLinkActive="active">Template form</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/reactiveFormValidation" routerLinkActive="active">Reactive form</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+<!-- Router outlet to display routed components -->
+<router-outlet></router-outlet>
+
+
+<!-- <div style="text-align: center; margin-top: 50px;">
+  <h3>Welcome to {{name}}</h3>
+  <h3>Welcome to {{topic}}</h3>
+  <img [src]="image" />
+
+  <br>
+
+  <button (click)="onClick()">Click</button>
+
+  <br>
+  <input type="text" [(ngModel)]="textField">
+
+  <p>{{textField}}</p>
+
+  <br>
+  <button (click)="increment()">Increment</button>
+  <button (click)="decrement()">Decrement</button>
+  <br>
+
+  <div style="display: flex;">
+    <button (click)="updateDirect()">Update Direct</button>
+    <button (click)="updateReassign()">Update Reassign</button>
+  </div>
+  <app-child *ngIf="visibility" [myNumber]="number" [changeUser]="user" [parentMessage]="newMessage"></app-child>
+  <br>
+  <button (click)="switchVisibility()">Show/Hide</button>
+
+  <div style="margin-top: 50px; margin-bottom: 50px;">
+    <div>
+      <h3>Directives ng-model</h3>
+      Quantity: <input type="number" [(ngModel)]="quantity">
+      Costs: <input type="number" [(ngModel)]="price">
+    </div>
+    <div style="margin-top: 3%;">
+      Total in dollar: {{ quantity * price }}
+    </div>
+  </div>
+
+  <div style="margin-top: 50px;">
+    <div style="margin-top: 3%;">
+      <h3>Directives ngFor</h3>
+      <ul>
+        <li *ngFor="let product of products">{{product.name}}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div>
+    <h3>Directive ngIf</h3>
+    <button (click)="displayContent()">Content to display</button>
+    <div *ngIf="condition">
+      <p>This content is conditionally displayed.</p>
+    </div>
+  </div>
+
+  <div>
+    <h3> Directive ngSwitch</h3>
+    <button (click)="currentView = 'home'">Home</button>
+    <button (click)="currentView = 'about'">About</button>
+    <button (click)="currentView = 'contact'">Contact</button>
+  
+    <div [ngSwitch]="currentView">
+      <div *ngSwitchCase="'home'">
+        <p>This is the Home view.</p>
+      </div>
+      <div *ngSwitchCase="'about'">
+        <p>This is the About view.</p>
+      </div>
+      <div *ngSwitchCase="'contact'">
+        <p>This is the Contact view.</p>
+      </div>
+      <div *ngSwitchDefault>
+        <p>This is the default view. Please select a view.</p>
+      </div>
+    </div>
+  </div>
+  
+
+  <div>
+    <button (click)="toggleActive()">toggle active</button>
+    <button (click)="toggleIsDisabled()">toggle Disabled</button>
+
+    <div [ngClass]="{'active' : isActive, 'disabled': isDisabled}">
+      <h3>toggle clicks</h3>
+    </div>
+
+  </div>
+  
+
+</div> -->
