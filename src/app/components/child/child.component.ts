@@ -13,6 +13,8 @@ export class ChildComponent implements OnInit, OnChanges, DoCheck {
 
   @Input() parentMessage: string | undefined;
 
+  @Input() myNewMessage :string | undefined;
+
   @Output() messageChange = new EventEmitter<string>();
 
   message: string = 'message from child'
@@ -27,6 +29,7 @@ export class ChildComponent implements OnInit, OnChanges, DoCheck {
   }
 
   ngOnChanges(changes: SimpleChanges) { // any changes in the value from parent componnet
+    
     console.log('ngOnChanges', changes);
     if (changes['myNewNumber']) {
       const newNumber: SimpleChange = changes['myNewNumber'];
@@ -41,6 +44,8 @@ export class ChildComponent implements OnInit, OnChanges, DoCheck {
   }
 
   ngOnInit() {
+    console.log(this.myNewMessage,'myNewMessage');
+
     console.log('ngOnInit'); // executed only once at initial render
   }
 

@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class CommonService {
   public myData: any = [];
-  public parentData: string | undefined;
+  public parentData: string = "parent data";
 
 
   list: any = [
