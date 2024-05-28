@@ -77,10 +77,6 @@ export class HomeComponent {
     this.condition = !this.condition
   }
 
-  onClick() {
-    console.log('button clicked');
-  }
-
   user = {
     name: 'sravanthi'
   };
