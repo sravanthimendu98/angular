@@ -7,17 +7,17 @@ import { ChildComponent } from '../components/child/child.component';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterModule, ChildComponent,],
+  imports: [FormsModule, CommonModule, RouterModule, ChildComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.css',
 })
 export class HomeComponent {
-  @ViewChild(ChildComponent) ChildComponent !: ChildComponent;
+  @ViewChild(ChildComponent) ChildComponent!: ChildComponent;
 
   title = 'myNewApp';
   number = 1;
-  public name = 'Angular';
-  public topic = 'Data Binding';
+  // public name = 'Angular';
+  // public topic = 'Data Binding';
   public image = '/assets/asterixk.svg';
   public textField = '';
   public visibility: boolean = true;
@@ -28,10 +28,10 @@ export class HomeComponent {
   currentView: string = '';
   isActive: boolean = true;
   isDisabled: boolean = false;
-  message: string = ''
-  textMessage : string = "helo new message"
+  message: string = '';
+  textMessage: string = 'helo new message';
 
-  constructor(private detector: ChangeDetectorRef) { }
+  constructor(private detector: ChangeDetectorRef) {}
 
   ngAfterViewInit() {
     console.log(this.ChildComponent.message, 'this.ChildComponent.message');
@@ -40,45 +40,44 @@ export class HomeComponent {
   }
 
   onMessageChange(newMessage: string) {
-    console.log("newMessage after the child update", newMessage);
+    console.log('newMessage after the child update', newMessage);
     this.newMessage = newMessage;
   }
 
   toggleActive() {
-    console.log("active");
-    this.isActive = !this.isActive
+    console.log('active');
+    this.isActive = !this.isActive;
   }
 
   toggleIsDisabled() {
-    console.log("disabled");
-    this.isDisabled = !this.isDisabled
+    console.log('disabled');
+    this.isDisabled = !this.isDisabled;
   }
-
 
   products: any = [
     {
-      name: "item 1",
+      name: 'item 1',
     },
     {
-      name: "item 2"
+      name: 'item 2',
     },
     {
-      name: "item 3"
-    }
-  ]
+      name: 'item 3',
+    },
+  ];
 
   switchVisibility() {
     this.visibility = !this.visibility;
   }
 
   displayContent() {
-    console.log("displayed");
+    console.log('displayed');
 
-    this.condition = !this.condition
+    this.condition = !this.condition;
   }
 
   user = {
-    name: 'sravanthi'
+    name: 'sravanthi',
   };
 
   // Direct mutation
@@ -99,5 +98,4 @@ export class HomeComponent {
   decrement() {
     this.number--;
   }
-
 }

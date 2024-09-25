@@ -1,4 +1,18 @@
-<div style="text-align: center; margin-top: 30px;">
+<div>
+    <h3>
+        Roting with params
+    </h3>
+    <h5>Department List</h5>
+    <div class="list-group" style="padding-left: 20px;">
+        <div class="list-group-item" (click)="onSelect(department)" *ngFor="let department of departments"
+            style="cursor: pointer; width: 40%;">
+            <span class="badge bg-secondary">{{department.id}} </span><span style="padding-left: 10px;"> {{department.name}}</span>
+        </div>
+    </div>
+</div>
+
+
+<div style="margin-top: 30px;">
     <h5>Data Passing through service file for Unrelated Components</h5>
 </div>
 <app-to-do-app></app-to-do-app>

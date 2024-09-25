@@ -1,22 +1,21 @@
-// app.module.ts
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { AppRoutingModule } from './app.routes'; // Import AppRoutingModule
-import { AppComponent } from './app.component';
-import { TemplateFormValidationComponent } from './components/template-form-validation/template-form-validation.component';
-import { ReactiveFormValidationComponent } from './components/reactive-form-validation/reactive-form-validation.component';
+import { AppRoutingModule } from './app.routes';
+import { CommonService } from './common.service';
+import { CommonModule, DatePipe } from '@angular/common';
+import { AppInterceptor } from '../services/interceptors.service';
 
 @NgModule({
-  declarations: [
-    
-  ],
+  declarations: [],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule // Add AppRoutingModule here
+    AppRoutingModule,
+    CommonModule,
+    DatePipe,
   ],
-  providers: [],
-  bootstrap: []
+  providers: [CommonService, AppInterceptor],
+  bootstrap: [],
 })
-export class AppModule { }
+export class AppModule {}

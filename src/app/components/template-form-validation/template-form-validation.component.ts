@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
@@ -10,6 +10,8 @@ import { FormsModule, NgForm } from '@angular/forms';
   styleUrl: './template-form-validation.component.css'
 })
 export class TemplateFormValidationComponent {
+
+  @ViewChild('userForm') public createTemplateForm !: NgForm
 
   userObj: any = {
     firstName: "",

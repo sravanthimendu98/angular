@@ -1,0 +1,5 @@
+<div>
+    <h5 [ngStyle]="{backgroundColor: 'isBlue' ? 'blue' : 'red'}">BuiltIn Pipes</h5>
+    <p *ngIf="show"><b>Currency Pipes</b> : {{amount | currency:'USD'}}</p>
+    <p><b>DatePipe</b> : Current date: {{ currentDate | date:'dd-MM-yyyy HH:mm' }}</p>
+</div>
