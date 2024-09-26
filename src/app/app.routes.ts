@@ -8,6 +8,7 @@ import { DepartmentDetailsComponent } from './department-details/department-deta
 import { ReactiveFormDataComponent } from './reactive-form-data/reactive-form-data.component';
 import { AuthGuardService } from './auth-guard.service';
 import { CanDeactivateGuard } from './can-deactivate.guard';
+import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
   {
@@ -26,6 +27,12 @@ export const routes: Routes = [
     // canDeactivate: [CanDeactivateGuard],
   },
   {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [AuthGuardService],
+    // canDeactivate: [CanDeactivateGuard],
+  },
+  {
     path: 'home',
     loadComponent: () =>
       import('./home/home.component').then((m) => m.HomeComponent),
@@ -34,13 +41,13 @@ export const routes: Routes = [
   },
   { path: 'components/departments/:id', component: DepartmentDetailsComponent },
   {
-    path: '',
+    path: 'reactiveForm',
     component: ReactiveFormValidationComponent,
     canActivate: [AuthGuardService],
     // canDeactivate: [CanDeactivateGuard],
   },
   { path: 'getFormData', component: ReactiveFormDataComponent },
-  { path: '', redirectTo: '/', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 ];
 

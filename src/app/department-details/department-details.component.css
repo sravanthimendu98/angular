@@ -1,0 +1,12 @@
+table {
+    width: 100%;
+}
+.tableContainer {
+  width: 95%;
+  border: 1px solid #e0dada;
+  margin: auto;
+  margin-top: 32px;
+}
+.mdc-data-table__header-row {
+  background: #ced4da;
+}

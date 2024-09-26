@@ -21,6 +21,7 @@ export class AppInterceptor implements HttpInterceptor {
     let request = req;
 
     const sessionToken = sessionStorage.getItem('token');
+    console.log(sessionToken, 'sessionToekn');
 
     if (sessionToken) {
       request = req.clone({
@@ -34,7 +35,7 @@ export class AppInterceptor implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => {
         if (error.error && error.error.error === 'invalid_token') {
           sessionStorage.removeItem('access_token');
-          this.router.navigate(['/']);
+          this.router.navigate(['/login']);
         }
         return throwError(error);
       })
