@@ -20,4 +20,9 @@ import { ToDoAppComponent } from './to-do-app/to-do-app.component';
     ToDoAppComponent,
   ],
 })
-export class AppComponent {}
+export class AppComponent {
+  constructor(private router: Router) {}
+  shouldShowNavbar(): boolean {
+    return this.router.url !== '/login'; // Adjust based on your login route
+  }
+}
