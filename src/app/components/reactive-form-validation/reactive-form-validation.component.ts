@@ -1,4 +1,9 @@
-import { CommonModule } from '@angular/common';
+import {
+  CommonModule,
+  CurrencyPipe,
+  DatePipe,
+  LowerCasePipe,
+} from '@angular/common';
 import { Component } from '@angular/core';
 import {
   FormControl,
@@ -8,26 +13,28 @@ import {
 } from '@angular/forms';
 import { FormDataService } from '../../../services/reactiveFrom.service';
 import { Router } from '@angular/router';
-import { CanComponentDeactivate } from '../../can-deactivate.guard';
+// import { CanComponentDeactivate } from '../../can-deactivate.guard';
 import { Observable } from 'rxjs';
+import { CustomPipePipe } from '../../custom-pipe.pipe';
 
 @Component({
   selector: 'app-reactive-form-validation',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, CustomPipePipe, LowerCasePipe],
   templateUrl: './reactive-form-validation.component.html',
   styleUrl: './reactive-form-validation.component.css',
 })
-export class ReactiveFormValidationComponent implements CanComponentDeactivate {
+export class ReactiveFormValidationComponent {
   userForm: FormGroup;
-  hasUnsavedChanges = true;
+  public formName = 'Reactive form validation';
+  // hasUnsavedChanges = true;
 
-  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
-    if (this.hasUnsavedChanges) {
-      return confirm('You have unsaved changes. Do you really want to leave?');
-    }
-    return true;
-  }
+  // canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+  //   if (this.hasUnsavedChanges) {
+  //     return confirm('You have unsaved changes. Do you really want to leave?');
+  //   }
+  //   return true;
+  // }
 
   constructor(
     private formDataService: FormDataService,

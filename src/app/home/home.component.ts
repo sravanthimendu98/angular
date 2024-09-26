@@ -16,8 +16,6 @@ export class HomeComponent {
 
   title = 'myNewApp';
   number = 1;
-  // public name = 'Angular';
-  // public topic = 'Data Binding';
   public image = '/assets/asterixk.svg';
   public textField = '';
   public visibility: boolean = true;
