@@ -15,11 +15,18 @@ import { FormDataService } from '../../../services/reactiveFrom.service';
 import { Router } from '@angular/router';
 import { CustomPipePipe } from '../../../utils/custom-pipe.pipe';
 import { CanComponentDeactivate } from '../../../services/canDeactivateGuard.service';
+import { HighlightDirective } from '../../../utils/highlight.directive';
 
 @Component({
   selector: 'app-reactive-form-validation',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, CustomPipePipe, LowerCasePipe],
+  imports: [
+    ReactiveFormsModule,
+    CommonModule,
+    CustomPipePipe,
+    LowerCasePipe,
+    HighlightDirective,
+  ],
   templateUrl: './reactive-form-validation.component.html',
   styleUrl: './reactive-form-validation.component.css',
 })
