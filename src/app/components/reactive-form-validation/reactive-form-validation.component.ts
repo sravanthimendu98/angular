@@ -13,9 +13,8 @@ import {
 } from '@angular/forms';
 import { FormDataService } from '../../../services/reactiveFrom.service';
 import { Router } from '@angular/router';
-// import { CanComponentDeactivate } from '../../can-deactivate.guard';
-import { Observable } from 'rxjs';
-import { CustomPipePipe } from '../../custom-pipe.pipe';
+import { CustomPipePipe } from '../../../utils/custom-pipe.pipe';
+import { CanComponentDeactivate } from '../../../services/canDeactivateGuard.service';
 
 @Component({
   selector: 'app-reactive-form-validation',
@@ -24,17 +23,17 @@ import { CustomPipePipe } from '../../custom-pipe.pipe';
   templateUrl: './reactive-form-validation.component.html',
   styleUrl: './reactive-form-validation.component.css',
 })
-export class ReactiveFormValidationComponent {
+export class ReactiveFormValidationComponent implements CanComponentDeactivate {
   userForm: FormGroup;
   public formName = 'Reactive form validation';
-  // hasUnsavedChanges = true;
+  isFormSubmitted: boolean = false;
 
-  // canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
-  //   if (this.hasUnsavedChanges) {
-  //     return confirm('You have unsaved changes. Do you really want to leave?');
-  //   }
-  //   return true;
-  // }
+  canDeactivate(): boolean {
+    // Implement the logic to determine if the user can leave the component
+    return confirm(
+      'Do you want to leave the page? Unsaved changes may be lost.'
+    );
+  }
 
   constructor(
     private formDataService: FormDataService,
@@ -56,8 +55,6 @@ export class ReactiveFormValidationComponent {
       isAgree: new FormControl(false),
     });
   }
-
-  isFormSubmitted: boolean = false;
 
   onSubmit() {
     const formValid = this.userForm.valid;
