@@ -40,7 +40,7 @@ export class LoginComponent {
       const token = 'token';
 
       sessionStorage.setItem('token', token);
-      this.router.navigate(['/reactiveForm']);
+      this.router.navigate(['/userInfoDetails']);
     } else {
       alert('Invalid email or password. Please try again.');
     }

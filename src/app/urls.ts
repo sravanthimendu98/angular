@@ -4,6 +4,5 @@ import { environment } from '../environments/environment';
   providedIn: 'root',
 })
 export class Urls {
-  public sourceUrl: string = environment.BaseUrl;
-  public userUrl: string = this.sourceUrl + '/users';
+  public userUrl: string = environment.BaseUrl + '/users';
 }
