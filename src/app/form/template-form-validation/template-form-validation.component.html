@@ -4,7 +4,7 @@
     <div class="col-md-4 mb-3">
       <label for="validationCustom01">First name</label>
       <input type="text" class="form-control" #firstName="ngModel" name="firstName" [(ngModel)]="userObj.firstName"
-        placeholder="First name" minlength="3" appHighlight required>
+        placeholder="First name" minlength="3" appAutoFocus required>
       <div class="text-danger"
         *ngIf="(firstName.invalid || (firstName.touched || firstName.dirty)) && (isFormSubmitted && firstName.invalid)">
         <span *ngIf="firstName.errors?.['required']">First name is required</span>

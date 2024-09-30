@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { HighlightDirective } from '../../../utils/highlight.directive';
+import { HighlightDirective } from '../../../utils/directives.ts/highlight.directive';
+import { AutoFocusDirective } from '../../../utils/directives.ts/AutoFocus.directive';
 
 @Component({
   selector: 'app-template-form-validation',
   standalone: true,
-  imports: [FormsModule, CommonModule, HighlightDirective],
+  imports: [FormsModule, CommonModule, HighlightDirective, AutoFocusDirective],
   templateUrl: './template-form-validation.component.html',
   styleUrl: './template-form-validation.component.css',
 })

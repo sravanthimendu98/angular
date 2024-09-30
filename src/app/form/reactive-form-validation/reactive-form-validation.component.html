@@ -5,7 +5,7 @@
         <div class="col-md-4 mb-3">
             <label for="validationCustom01">First name</label>
             <input type="text" class="form-control" formControlName="firstName" id="validationCustom01"
-                placeholder="First name" appHighlight required>
+                placeholder="First name" appAutoFocus required>
             <div class="text-danger"
                 *ngIf="(userForm.controls['firstName'].touched || isFormSubmitted) && userForm.controls['firstName'].invalid">
                 <span *ngIf="userForm.controls['firstName'].errors?.['required']">First name is required</span>

@@ -15,7 +15,8 @@ import { FormDataService } from '../../../services/reactiveForm.service';
 import { Router } from '@angular/router';
 import { CustomPipePipe } from '../../../utils/customDate.pipe';
 import { CanComponentDeactivate } from '../../../services/canDeactivateGuard.service';
-import { HighlightDirective } from '../../../utils/highlight.directive';
+import { HighlightDirective } from '../../../utils/directives.ts/highlight.directive';
+import { AutoFocusDirective } from '../../../utils/directives.ts/AutoFocus.directive';
 
 @Component({
   selector: 'app-reactive-form-validation',
@@ -26,6 +27,7 @@ import { HighlightDirective } from '../../../utils/highlight.directive';
     CustomPipePipe,
     LowerCasePipe,
     HighlightDirective,
+    AutoFocusDirective,
   ],
   templateUrl: './reactive-form-validation.component.html',
   styleUrl: './reactive-form-validation.component.css',

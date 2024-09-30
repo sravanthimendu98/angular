@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { HighlightDirective } from '../../utils/highlight.directive';
+import { HighlightDirective } from '../../utils/directives.ts/highlight.directive';
 import { DisableCopyPasteDirective } from '../../utils/directives.ts/DisableCopyPaste.directive';
 import { ScrollToTopDirective } from '../../utils/directives.ts/ScrollToTop.directive';
 

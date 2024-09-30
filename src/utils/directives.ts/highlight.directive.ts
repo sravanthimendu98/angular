@@ -1,16 +1,10 @@
-import {
-  Directive,
-  ElementRef,
-  Renderer2,
-  HostListener,
-  AfterViewInit,
-} from '@angular/core';
+import { Directive, ElementRef, Renderer2, HostListener } from '@angular/core';
 
 @Directive({
   selector: '[appHighlight]',
   standalone: true,
 })
-export class HighlightDirective implements AfterViewInit {
+export class HighlightDirective {
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
   @HostListener('mouseenter') onMouseEnter() {
@@ -23,9 +17,5 @@ export class HighlightDirective implements AfterViewInit {
 
   private highlight(color: string | null) {
     this.renderer.setStyle(this.el.nativeElement, 'backgroundColor', color);
-  }
-
-  ngAfterViewInit() {
-    this.el.nativeElement.focus();
   }
 }
