@@ -1,11 +1,11 @@
-<h5 appHighlight class="mt-2" style="text-align: center;">{{formName | customPipe}}</h5>
+<h5 appHighlight class="mt-2" style="text-align: center;">{{formName }}</h5>
 
 <form class="needs-validation" style="margin: 70px;" [formGroup]="userForm" novalidate>
     <div class="form-row">
         <div class="col-md-4 mb-3">
             <label for="validationCustom01">First name</label>
             <input type="text" class="form-control" formControlName="firstName" id="validationCustom01"
-                placeholder="First name" required>
+                placeholder="First name" appHighlight required>
             <div class="text-danger"
                 *ngIf="(userForm.controls['firstName'].touched || isFormSubmitted) && userForm.controls['firstName'].invalid">
                 <span *ngIf="userForm.controls['firstName'].errors?.['required']">First name is required</span>
@@ -75,5 +75,5 @@
             </div>
         </div>
     </div>
-    <button class="btn btn-primary" type="button" (click)="onSubmit()" style="margin-top: 50px; float: right;">Submit form</button>
+    <button class="btn btn-primary" type="button" (click)="onSubmit()" style="margin-top: 50px; float: right;">Next</button>
 </form>

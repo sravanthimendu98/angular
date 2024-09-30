@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
-import { FormDataService } from '../../services/reactiveFrom.service';
+import { FormDataService } from '../../services/reactiveForm.service';
 
 @Component({
   selector: 'app-reactive-form-data',

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../environments/environment';
 @Injectable({
   providedIn: 'root',
 })
 export class Urls {
-  public sourceUrl: string = 'https://jsonplaceholder.typicode.com';
+  public sourceUrl: string = environment.BaseUrl;
   public userUrl: string = this.sourceUrl + '/users';
 }
