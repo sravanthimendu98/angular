@@ -36,7 +36,6 @@ export class ReactiveFormValidationComponent implements CanComponentDeactivate {
   isFormSubmitted: boolean = false;
 
   canDeactivate(): boolean {
-    // Implement the logic to determine if the user can leave the component
     return confirm(
       'Do you want to leave the page? Unsaved changes may be lost.'
     );
