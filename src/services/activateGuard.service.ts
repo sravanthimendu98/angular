@@ -72,7 +72,7 @@ export class ActivateGuardService
         if (userDetails) {
           return { user: userDetails, message: 'Data stored!' };
         } else {
-          throw new Error('User not active or not found');
+          throw new Error('No user details found');
         }
       }),
       catchError((error) => {
