@@ -14,6 +14,7 @@ export const routes: Routes = [
     path: 'forms',
     component: FormComponent,
     canActivateChild: [ActivateGuardService],
+    canMatch: [ActivateGuardService],
     children: [
       {
         path: 'templateForm',
@@ -35,16 +36,20 @@ export const routes: Routes = [
     path: 'login',
     component: LoginComponent,
     canActivate: [ActivateGuardService],
+    canMatch: [ActivateGuardService],
   },
   {
     path: 'userInfoDetails',
     component: DepartmentDetailsComponent,
     canActivate: [ActivateGuardService],
+    resolve: { userData: ActivateGuardService },
+    canMatch: [ActivateGuardService],
   },
   {
     path: 'getFormData',
     component: ReactiveFormDataComponent,
     canActivate: [ActivateGuardService],
+    canMatch: [ActivateGuardService],
   },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },

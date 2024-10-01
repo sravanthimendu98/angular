@@ -4,9 +4,15 @@ import {
   CanActivate,
   CanDeactivate,
   CanActivateChild,
+  Resolve,
+  Route,
   RouterStateSnapshot,
+  CanMatch,
+  UrlSegment,
 } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { BaseService } from './baseService';
 
 export interface CanComponentDeactivate {
   canDeactivate: () => Observable<boolean> | Promise<boolean> | boolean;
@@ -19,10 +25,14 @@ export class ActivateGuardService
   implements
     CanActivate,
     CanActivateChild,
-    CanDeactivate<CanComponentDeactivate>
+    CanDeactivate<CanComponentDeactivate>,
+    CanMatch,
+    Resolve<any>
 {
   token = 'TOKEN';
-  constructor() {}
+
+  constructor(private baseService: BaseService) {}
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -44,6 +54,31 @@ export class ActivateGuardService
     nextState?: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
     return component.canDeactivate ? component.canDeactivate() : true;
+  }
+
+  canMatch(
+    route: Route,
+    segments: UrlSegment[]
+  ): Observable<boolean> | Promise<boolean> | boolean {
+    return this.isAuthenticated();
+  }
+
+  resolve(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<any> | Promise<any> | any {
+    return this.baseService.getUserDetails().pipe(
+      map((userDetails) => {
+        if (userDetails) {
+          return { user: userDetails, message: 'Data stored!' };
+        } else {
+          throw new Error('User not active or not found');
+        }
+      }),
+      catchError((error) => {
+        return of({ user: null, message: 'Error resolving data' });
+      })
+    );
   }
 
   private isAuthenticated(): boolean {
