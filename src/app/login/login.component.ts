@@ -8,6 +8,7 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { BaseService } from 'src/services/baseService';
 
 @Component({
   selector: 'app-login',
@@ -18,11 +19,13 @@ import { CommonModule } from '@angular/common';
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  token = 'token';
 
   constructor(
     private router: Router,
     private http: HttpClient,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private baseService: BaseService
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -37,10 +40,23 @@ export class LoginComponent {
     const { email, password } = this.loginForm.value;
 
     if (email === validEmail && password === validPassword) {
-      const token = 'token';
-
-      sessionStorage.setItem('token', token);
-      this.router.navigate(['/userInfoDetails']);
+      let payload = {
+        title: validEmail,
+        body: validPassword,
+      };
+      try {
+        this.baseService.userLogin(payload).subscribe(
+          (response) => {
+            sessionStorage.setItem('access_token', this.token);
+            this.router.navigate(['/userInfoDetails']);
+          },
+          (error) => {
+            alert('User failed to login');
+          }
+        );
+      } catch (error) {
+        alert('An unexpected error occurred.');
+      }
     } else {
       alert('Invalid email or password. Please try again.');
     }
