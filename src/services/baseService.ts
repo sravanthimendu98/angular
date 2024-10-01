@@ -7,13 +7,13 @@ import { Urls } from '../app/urls';
   providedIn: 'root',
 })
 export class BaseService {
-  constructor(private http: HttpClient, private urls: Urls) {}
+  constructor(private _httpClient: HttpClient, private urls: Urls) {}
 
   userLogin(data: any): Observable<any> {
-    return this.http.post(this.urls.createUserUrl, data);
+    return this._httpClient.post(this.urls.createUserUrl, data);
   }
 
   getUserDetails(): Observable<any> {
-    return this.http.get(this.urls.userUrl);
+    return this._httpClient.get(this.urls.userUrl);
   }
 }

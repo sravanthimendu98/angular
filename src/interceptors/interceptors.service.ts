@@ -11,7 +11,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 
 @Injectable()
 export class AppInterceptor implements HttpInterceptor {
-  constructor(private router: Router) {}
+  constructor(private _router: Router) {}
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
@@ -31,7 +31,7 @@ export class AppInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.error && error.error.error === 'invalid_token') {
-          this.router.navigate(['/login']);
+          this._router.navigate(['/login']);
         }
         return throwError(() => error);
       })

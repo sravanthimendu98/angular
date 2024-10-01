@@ -15,8 +15,8 @@ import { FormDataService } from '../../../services/reactiveForm.service';
 import { Router } from '@angular/router';
 import { CustomPipePipe } from '../../../utils/customDate.pipe';
 import { CanComponentDeactivate } from '../../../services/canDeactivateGuard.service';
-import { HighlightDirective } from '../../../utils/directives.ts/highlight.directive';
-import { AutoFocusDirective } from '../../../utils/directives.ts/AutoFocus.directive';
+import { HighlightDirective } from '../../../utils/directives/highlight.directive';
+import { AutoFocusDirective } from '../../../utils/directives/AutoFocus.directive';
 
 @Component({
   selector: 'app-reactive-form-validation',
@@ -44,8 +44,8 @@ export class ReactiveFormValidationComponent implements CanComponentDeactivate {
   }
 
   constructor(
-    private formDataService: FormDataService,
-    private router: Router
+    private _formDataService: FormDataService,
+    private _router: Router
   ) {
     this.userForm = new FormGroup({
       firstName: new FormControl('', [
@@ -68,9 +68,9 @@ export class ReactiveFormValidationComponent implements CanComponentDeactivate {
     const formValid = this.userForm.valid;
     this.isFormSubmitted = true;
     const validForm = this.userForm.value;
-    this.formDataService.setFormData(validForm);
+    this._formDataService.setFormData(validForm);
     if (formValid) {
-      this.router.navigate(['/getFormData']);
+      this._router.navigate(['/getFormData']);
     }
   }
 }

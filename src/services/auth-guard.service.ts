@@ -3,8 +3,6 @@ import {
   ActivatedRouteSnapshot,
   CanActivate,
   CanDeactivate,
-  Router,
-  RouterStateSnapshot,
 } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -14,7 +12,7 @@ import { Observable } from 'rxjs';
 export class AuthGuardService implements CanActivate {
   token = 'TOKEN';
 
-  constructor(private router: Router) {}
+  constructor() {}
 
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
     const isAuthenticated = this.checkIfAuthenticated();

@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { BaseService } from '../../services/baseService';
 import { CustomPipePipe } from '../../utils/customDate.pipe';
-import { DisableCopyPasteDirective } from '../../utils/directives.ts/DisableCopyPaste.directive';
-import { ScrollToTopDirective } from '../../utils/directives.ts/ScrollToTop.directive';
+import { DisableCopyPasteDirective } from '../../utils/directives/DisableCopyPaste.directive';
+import { ScrollToTopDirective } from '../../utils/directives/ScrollToTop.directive';
 import { Router } from '@angular/router';
 
 export interface User {
@@ -47,14 +47,14 @@ export class DepartmentDetailsComponent implements OnInit {
   ];
   dataSource: User[] = [];
 
-  constructor(private baseService: BaseService) {}
+  constructor(private _baseService: BaseService) {}
 
   ngOnInit() {
     this.getUsers();
   }
 
   getUsers() {
-    this.baseService.getUserDetails().subscribe((data: User[]) => {
+    this._baseService.getUserDetails().subscribe((data: User[]) => {
       this.dataSource = data.map((user) => ({
         ...user,
         date: new Date(),

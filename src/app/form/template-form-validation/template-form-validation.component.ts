@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { HighlightDirective } from '../../../utils/directives.ts/highlight.directive';
-import { AutoFocusDirective } from '../../../utils/directives.ts/AutoFocus.directive';
+import { HighlightDirective } from '../../../utils/directives/highlight.directive';
+import { AutoFocusDirective } from '../../../utils/directives/AutoFocus.directive';
 
 @Component({
   selector: 'app-template-form-validation',

@@ -20,10 +20,10 @@ export class ReactiveFormDataComponent implements OnInit {
   ];
   dataSource: any = [];
 
-  constructor(private formDataService: FormDataService) {}
+  constructor(private _formDataService: FormDataService) {}
 
   ngOnInit() {
-    const formData = this.formDataService.getFormData();
+    const formData = this._formDataService.getFormData();
     if (formData) {
       this.dataSource = [formData];
     }

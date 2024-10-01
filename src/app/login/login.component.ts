@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import {
   FormBuilder,
   FormGroup,
@@ -22,10 +21,9 @@ export class LoginComponent {
   token = 'token';
 
   constructor(
-    private router: Router,
-    private http: HttpClient,
+    private _router: Router,
     private fb: FormBuilder,
-    private baseService: BaseService
+    private _baseService: BaseService
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -42,10 +40,10 @@ export class LoginComponent {
         title: validEmail,
         body: validPassword,
       };
-      this.baseService.userLogin(payload).subscribe(
+      this._baseService.userLogin(payload).subscribe(
         (response: any) => {
           sessionStorage.setItem('access_token', this.token);
-          this.router.navigate(['/userInfoDetails']);
+          this._router.navigate(['/userInfoDetails']);
         },
         (error: any) => {
           alert('User failed to login');

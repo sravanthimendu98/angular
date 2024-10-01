@@ -5,13 +5,13 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class FormDataService {
-  private formDataSubject = new BehaviorSubject<any>(null);
+  private _formDataSubject = new BehaviorSubject<any>(null);
 
   setFormData(data: any) {
-    this.formDataSubject.next(data);
+    this._formDataSubject.next(data);
   }
 
   getFormData() {
-    return this.formDataSubject.value;
+    return this._formDataSubject.value;
   }
 }

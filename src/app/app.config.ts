@@ -6,7 +6,7 @@ import {
   withInterceptorsFromDi,
 } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AppInterceptor } from 'src/services/interceptors.service';
+import { AppInterceptor } from 'src/interceptors/interceptors.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
