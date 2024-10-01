@@ -5,7 +5,6 @@ import { DepartmentDetailsComponent } from './department-details/department-deta
 import { ReactiveFormDataComponent } from './reactive-form-data/reactive-form-data.component';
 import { ActivateGuardService } from '../services/activateGuard.service';
 import { LoginComponent } from './login/login.component';
-import { CanDeactivateGuard } from '../services/canDeactivateGuard.service';
 import { TemplateFormValidationComponent } from './form/template-form-validation/template-form-validation.component';
 import { ReactiveFormValidationComponent } from './form/reactive-form-validation/reactive-form-validation.component';
 import { FormComponent } from './form/form.component';
@@ -14,17 +13,16 @@ export const routes: Routes = [
   {
     path: 'forms',
     component: FormComponent,
+    canActivateChild: [ActivateGuardService],
     children: [
       {
         path: 'templateForm',
         component: TemplateFormValidationComponent,
-        canActivate: [ActivateGuardService],
       },
       {
         path: 'reactiveForm',
         component: ReactiveFormValidationComponent,
-        canActivate: [ActivateGuardService],
-        canDeactivate: [CanDeactivateGuard],
+        canDeactivate: [ActivateGuardService],
       },
       {
         path: '',

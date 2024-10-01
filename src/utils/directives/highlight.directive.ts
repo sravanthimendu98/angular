@@ -16,6 +16,6 @@ export class HighlightDirective {
   }
 
   private highlight(color: string | null) {
-    this.renderer.setStyle(this.el.nativeElement, 'backgroundColor', color);
+    this.renderer.setStyle(this.el.nativeElement, 'color', color);
   }
 }
