@@ -36,27 +36,21 @@ export class LoginComponent {
   onLogin() {
     const validEmail = '123@gmail.com';
     const validPassword = '123';
-
     const { email, password } = this.loginForm.value;
-
     if (email === validEmail && password === validPassword) {
       let payload = {
         title: validEmail,
         body: validPassword,
       };
-      try {
-        this.baseService.userLogin(payload).subscribe(
-          (response) => {
-            sessionStorage.setItem('access_token', this.token);
-            this.router.navigate(['/userInfoDetails']);
-          },
-          (error) => {
-            alert('User failed to login');
-          }
-        );
-      } catch (error) {
-        alert('An unexpected error occurred.');
-      }
+      this.baseService.userLogin(payload).subscribe(
+        (response: any) => {
+          sessionStorage.setItem('access_token', this.token);
+          this.router.navigate(['/userInfoDetails']);
+        },
+        (error: any) => {
+          alert('User failed to login');
+        }
+      );
     } else {
       alert('Invalid email or password. Please try again.');
     }

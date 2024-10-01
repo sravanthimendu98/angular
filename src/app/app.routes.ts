@@ -22,6 +22,7 @@ export const routes: Routes = [
       {
         path: 'reactiveForm',
         component: ReactiveFormValidationComponent,
+        canDeactivate: [CanDeactivateGuard],
       },
       {
         path: '',

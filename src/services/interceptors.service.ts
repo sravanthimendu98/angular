@@ -26,15 +26,11 @@ export class AppInterceptor implements HttpInterceptor {
           access_token: accessToken,
         },
       });
-    } else {
-      alert('No token available');
-      this.router.navigate(['/login']);
     }
 
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.error && error.error.error === 'invalid_token') {
-          sessionStorage.removeItem('access_token');
           this.router.navigate(['/login']);
         }
         return throwError(() => error);

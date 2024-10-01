@@ -13,6 +13,6 @@ import { Router, RouterModule } from '@angular/router';
 export class AppComponent {
   constructor(private router: Router) {}
   shouldShowNavbar(): boolean {
-    return this.router.url !== '/login'; // Adjust based on your login route
+    return this.router.url !== '/login';
   }
 }
