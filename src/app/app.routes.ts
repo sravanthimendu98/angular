@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DepartmentDetailsComponent } from './department-details/department-details.component';
 import { ReactiveFormDataComponent } from './reactive-form-data/reactive-form-data.component';
-import { AuthGuardService } from '../services/auth-guard.service';
+import { ActivateGuardService } from '../services/activateGuard.service';
 import { LoginComponent } from './login/login.component';
 import { CanDeactivateGuard } from '../services/canDeactivateGuard.service';
 import { TemplateFormValidationComponent } from './form/template-form-validation/template-form-validation.component';
@@ -18,10 +18,12 @@ export const routes: Routes = [
       {
         path: 'templateForm',
         component: TemplateFormValidationComponent,
+        canActivate: [ActivateGuardService],
       },
       {
         path: 'reactiveForm',
         component: ReactiveFormValidationComponent,
+        canActivate: [ActivateGuardService],
         canDeactivate: [CanDeactivateGuard],
       },
       {
@@ -34,10 +36,18 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [ActivateGuardService],
   },
-  { path: 'userInfoDetails', component: DepartmentDetailsComponent },
-  { path: 'getFormData', component: ReactiveFormDataComponent },
+  {
+    path: 'userInfoDetails',
+    component: DepartmentDetailsComponent,
+    canActivate: [ActivateGuardService],
+  },
+  {
+    path: 'getFormData',
+    component: ReactiveFormDataComponent,
+    canActivate: [ActivateGuardService],
+  },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 ];

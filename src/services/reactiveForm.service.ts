@@ -7,11 +7,11 @@ import { BehaviorSubject } from 'rxjs';
 export class FormDataService {
   private _formDataSubject = new BehaviorSubject<any>(null);
 
-  setFormData(data: any) {
+  setFormData(data: any): void {
     this._formDataSubject.next(data);
   }
 
-  getFormData() {
+  getFormData(): any {
     return this._formDataSubject.value;
   }
 }

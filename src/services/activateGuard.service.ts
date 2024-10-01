@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuardService implements CanActivate {
+export class ActivateGuardService implements CanActivate {
   token = 'TOKEN';
 
   constructor() {}
