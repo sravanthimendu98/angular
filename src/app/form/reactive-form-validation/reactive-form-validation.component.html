@@ -1,79 +1,110 @@
-<h5 appHighlight class="mt-2" style="text-align: center;">{{formName }}</h5>
+<h5 appHighlight class="mt-2" style="text-align: center;">{{ formName }}</h5>
 
 <form class="needs-validation" style="margin: 70px;" [formGroup]="userForm" novalidate>
-    <div class="form-row">
-        <div class="col-md-4 mb-3">
-            <label for="validationCustom01">First name</label>
-            <input type="text" class="form-control" formControlName="firstName" id="validationCustom01"
-                placeholder="First name" appAutoFocus required>
-            <div class="text-danger"
-                *ngIf="(userForm.controls['firstName'].touched || isFormSubmitted) && userForm.controls['firstName'].invalid">
-                <span *ngIf="userForm.controls['firstName'].errors?.['required']">First name is required</span>
-                <span *ngIf="userForm.controls['firstName'].errors?.['minlength']">Enter min 3 characters</span>
-            </div>
+  <div class="form-row">
+    <!-- First Name -->
+    <div class="col-md-4 mb-3">
+        <label for="validationCustom01">First name</label>
+        <input type="text" class="form-control" formControlName="firstName" id="validationCustom01"
+          placeholder="First name" appAutoFocus minlength="2" required>
+        <div class="text-danger"
+          *ngIf="(userForm.controls['firstName'].touched || isFormSubmitted) && userForm.controls['firstName'].invalid">
+          <span *ngIf="userForm.controls['firstName'].errors?.['required']">
+            First name is required
+          </span>
+          <span *ngIf="!userForm.controls['firstName'].errors?.['required'] && userForm.controls['firstName'].errors?.['firstLetterNotCapitalized']">
+            First letter should be capitalized
+          </span>
+          <span *ngIf="!userForm.controls['firstName'].errors?.['required'] && !userForm.controls['firstName'].errors?.['firstLetterNotCapitalized'] && !userForm.controls['firstName'].errors?.['minlength'] && userForm.controls['firstName'].errors?.['hasNumber']">
+            First name should not contain numbers
+          </span>
         </div>
-        <div class="col-md-4 mb-3">
-            <label for="validationCustom02">Last name</label>
-            <input type="text" class="form-control" formControlName="lastName" id="validationCustom02"
-                placeholder="Last name" required>
-            <div class="text-danger"
-                *ngIf="(userForm.controls['lastName'].touched || isFormSubmitted) && userForm.controls['lastName'].invalid">
-                <span *ngIf="userForm.controls['lastName'].errors?.['required']">Last name is required</span>
-                <span *ngIf="userForm.controls['lastName'].errors?.['minlength']">Enter min 3 characters</span>
-            </div>
-        </div>
-        <div class="col-md-4 mb-3">
-            <label for="validationCustomUsername">Email</label>
-            <input type="text" class="form-control" formControlName="email" id="validationCustomUsername"
-                placeholder="Email" required>
-            <div class="text-danger"
-                *ngIf="(userForm.controls['email'].touched || isFormSubmitted) && userForm.controls['email'].invalid">
-                <span *ngIf="userForm.controls['email'].errors?.['required']">Email is required</span>
-                <span *ngIf="userForm.controls['email'].errors?.['email']">Invalid email format</span>
-            </div>
-        </div>
+      </div>
+    <!-- Last Name -->
+    <div class="col-md-4 mb-3">
+      <label for="validationCustom02">Last name</label>
+      <input type="text" class="form-control" formControlName="lastName" id="validationCustom02"
+        placeholder="Last name" minlength="2" required>
+      <div class="text-danger"
+        *ngIf="(userForm.controls['lastName'].touched || isFormSubmitted) && userForm.controls['lastName'].invalid">
+        <span *ngIf="userForm.controls['lastName'].errors?.['required']">Last name is required</span>
+        <span *ngIf="!userForm.controls['lastName'].errors?.['required'] && userForm.controls['lastName'].errors?.['firstLetterNotCapitalized']">
+            First letter should be capitalized
+          </span>
+          <span *ngIf="!userForm.controls['lastName'].errors?.['required'] && !userForm.controls['lastName'].errors?.['firstLetterNotCapitalized'] && !userForm.controls['lastName'].errors?.['minlength'] && userForm.controls['lastName'].errors?.['hasNumber']">
+            First name should not contain numbers
+          </span>
+      </div>
     </div>
-    <div class="form-row">
-        <div class="col-md-4 mb-3">
-            <label for="validationCustom03">City</label>
-            <input type="text" class="form-control" formControlName="city" id="validationCustom03" placeholder="City"
-                required>
-            <div class="text-danger"
-                *ngIf="(userForm.controls['city'].touched || isFormSubmitted) && userForm.controls['city'].invalid">
-                <span *ngIf="userForm.controls['city'].errors?.['required']">City is required</span>
-            </div>
+
+    <!-- Email -->
+    <div class="col-md-4 mb-3">
+        <label for="validationCustomUsername">Email</label>
+        <input type="email" class="form-control" formControlName="email" id="validationCustomUsername"
+          placeholder="Email" required>
+        <div class="text-danger"
+          *ngIf="(userForm.controls['email'].touched || isFormSubmitted) && userForm.controls['email'].invalid">
+          <span *ngIf="userForm.controls['email'].errors?.['required']">Email is required</span>
+          <span *ngIf="!userForm.controls['email'].errors?.['required'] && userForm.controls['email'].errors?.['invalidEmail']">
+            Invalid email address
+          </span>
         </div>
-        <div class="col-md-4 mb-3">
-            <label for="validationCustom04">State</label>
-            <input type="text" class="form-control" formControlName="state" id="validationCustom04" placeholder="State"
-                required>
-            <div class="text-danger"
-                *ngIf="(userForm.controls['state'].touched || isFormSubmitted) && userForm.controls['state'].invalid">
-                <span *ngIf="userForm.controls['state'].errors?.['required']">State is required</span>
-            </div>
-        </div>
-        <div class="col-md-4 mb-3">
-            <label for="validationCustom05">Zip</label>
-            <input type="text" class="form-control" formControlName="zipCode" id="validationCustom05" placeholder="Zip"
-                required>
-            <div class="text-danger"
-                *ngIf="(userForm.controls['zipCode'].touched || isFormSubmitted) && userForm.controls['zipCode'].invalid">
-                <span *ngIf="userForm.controls['zipCode'].errors?.['required']">Zip code is required</span>
-                <span *ngIf="userForm.controls['zipCode'].errors?.['pattern']">Invalid zip code format</span>
-            </div>
-        </div>
+      </div>
+</div>             
+
+  <div class="form-row">
+    <!-- City -->
+    <div class="col-md-4 mb-3">
+      <label for="validationCustom03">City</label>
+      <input type="text" class="form-control" formControlName="city" id="validationCustom03" placeholder="City" required>
+      <div class="text-danger"
+        *ngIf="(userForm.controls['city'].touched || isFormSubmitted) && userForm.controls['city'].invalid">
+        <span *ngIf="userForm.controls['city'].errors?.['required']">City is required</span>
+        <span *ngIf="userForm.controls['city'].errors?.['hasNumber']">Invalid City Name</span>
+      </div>
     </div>
-    <div class="form-group">
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" formControlName="isAgree" id="invalidCheck" required>
-            <label class="form-check-label" for="invalidCheck">
-                Agree to terms and conditions
-            </label>
-            <div class="text-danger"
-                *ngIf="(userForm.controls['isAgree'].touched || isFormSubmitted) && userForm.controls['isAgree'].invalid">
-                <span *ngIf="userForm.controls['isAgree'].errors?.['required']">You must agree before submitting</span>
-            </div>
-        </div>
+
+    <!-- State -->
+    <div class="col-md-4 mb-3">
+      <label for="validationCustom04">State</label>
+      <input type="text" class="form-control" formControlName="state" id="validationCustom04" placeholder="State"
+        required>
+      <div class="text-danger"
+        *ngIf="(userForm.controls['state'].touched || isFormSubmitted) && userForm.controls['state'].invalid">
+        <span *ngIf="userForm.controls['state'].errors?.['required']">State is required</span>
+        <span *ngIf="userForm.controls['state'].errors?.['hasNumber']">Invalid State Name</span>
+      </div>
     </div>
-    <button class="btn btn-primary" type="button" (click)="onSubmit()" style="margin-top: 50px; float: right;">Next</button>
+
+    <!-- Zip Code -->
+    <div class="col-md-4 mb-3">
+        <label for="validationCustom05">Zip</label>
+        <input type="text" class="form-control" formControlName="zipCode" id="validationCustom05" placeholder="Zip" required>
+        <div class="text-danger"
+          *ngIf="(userForm.controls['zipCode'].touched || isFormSubmitted) && userForm.controls['zipCode'].invalid">
+          <span *ngIf="userForm.controls['zipCode'].errors?.['required']">
+            Zip code is required
+          </span>
+          <span *ngIf="!userForm.controls['zipCode'].errors?.['required'] && userForm.controls['zipCode'].errors?.['invalidZipCode']">
+            Invalid zip code format (5 digits)
+          </span>
+        </div>
+      </div>
+      
+  </div>
+
+  <!-- Agree to terms -->
+  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" formControlName="isAgree" id="invalidCheck" required>
+      <label class="form-check-label" for="invalidCheck">Agree to terms and conditions</label>
+      <div class="text-danger"
+        *ngIf="(userForm.controls['isAgree'].touched || isFormSubmitted) && userForm.controls['isAgree'].invalid">
+        <span *ngIf="userForm.controls['isAgree'].errors?.['required']">You must agree before submitting</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Submit Button -->
+  <button class="btn btn-primary" type="button" (click)="onSubmit()" style="margin-top: 50px; float: right;">Next</button>
 </form>

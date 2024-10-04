@@ -10,10 +10,10 @@
       />
       <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
         <small class="error-message" *ngIf="loginForm.get('email')?.errors?.['required']">
-          Email is required.
+          Email is required
         </small>
         <small class="error-message" *ngIf="loginForm.get('email')?.errors?.['email']">
-          Invalid email format.
+          Invalid email format
         </small>
       </div>
     </div>
@@ -28,7 +28,7 @@
       />
       <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
         <small class="error-message" *ngIf="loginForm.get('password')?.errors?.['required']">
-          Password is required.
+          Password is required
         </small>
       </div>
     </div>

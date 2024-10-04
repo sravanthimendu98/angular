@@ -1,9 +1,4 @@
-import {
-  CommonModule,
-  CurrencyPipe,
-  DatePipe,
-  LowerCasePipe,
-} from '@angular/common';
+import { CommonModule, LowerCasePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import {
   FormControl,
@@ -17,6 +12,12 @@ import { CustomPipePipe } from '../../../utils/customDate.pipe';
 import { HighlightDirective } from '../../../utils/directives/highlight.directive';
 import { AutoFocusDirective } from '../../../utils/directives/AutoFocus.directive';
 import { CanComponentDeactivate } from 'src/services/activateGuard.service';
+import {
+  capitalizedFirstLetterValidator,
+  customEmailValidator,
+  noNumbersValidator,
+  zipCodeValidator,
+} from 'src/utils/customFormValidations';
 
 @Component({
   selector: 'app-reactive-form-validation',
@@ -50,26 +51,27 @@ export class ReactiveFormValidationComponent implements CanComponentDeactivate {
     this.userForm = new FormGroup({
       firstName: new FormControl('', [
         Validators.required,
-        Validators.minLength(3),
+        noNumbersValidator,
+        capitalizedFirstLetterValidator,
       ]),
       lastName: new FormControl('', [
         Validators.required,
-        Validators.minLength(3),
+        noNumbersValidator,
+        capitalizedFirstLetterValidator,
       ]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      city: new FormControl(''),
-      state: new FormControl(''),
-      zipCode: new FormControl(''),
-      isAgree: new FormControl(false),
+      email: new FormControl('', [Validators.required, customEmailValidator()]),
+      city: new FormControl('', [Validators.required, noNumbersValidator]),
+      state: new FormControl('', [Validators.required, noNumbersValidator]),
+      zipCode: new FormControl('', [Validators.required, zipCodeValidator]),
+      isAgree: new FormControl(false, Validators.requiredTrue),
     });
   }
 
   onSubmit() {
-    const formValid = this.userForm.valid;
     this.isFormSubmitted = true;
-    const validForm = this.userForm.value;
-    this._formDataService.setFormData(validForm);
-    if (formValid) {
+    if (this.userForm.valid) {
+      const validForm = this.userForm.value;
+      this._formDataService.setFormData(validForm);
       this._router.navigate(['/getFormData']);
     }
   }
