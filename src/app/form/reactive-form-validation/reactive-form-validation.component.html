@@ -1,6 +1,6 @@
 <h5 appHighlight class="mt-2" style="text-align: center;">{{ formName }}</h5>
 
-<form class="needs-validation" style="margin: 70px;" [formGroup]="userForm" novalidate>
+<form (ngSubmit)="onSubmit()" class="needs-validation" style="margin: 70px;" [formGroup]="userForm" novalidate>
   <div class="form-row">
     <!-- First Name -->
     <div class="col-md-4 mb-3">
@@ -52,7 +52,6 @@
           <span *ngIf="emailControl.errors?.['required']">Email is required</span>
           <span *ngIf="!emailControl.errors?.['required'] && emailControl.errors?.['invalidEmail']">Invalid email address</span>
         </div>
-        <!-- Show Remove button only for optional emails (i > 0) -->
          <div style="display: flex; justify-content: end;">
         <button 
           type="button" 
@@ -64,7 +63,6 @@
       </div>
       </div>
     </div>
-    <!-- Hide Add Optional button if there are any optional email fields -->
     <div style="display: flex; justify-content: end;">
     <button 
       type="button" 
