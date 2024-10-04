@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import {
   FormControl,
   FormGroup,
+  FormArray,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -31,7 +32,7 @@ import {
     AutoFocusDirective,
   ],
   templateUrl: './reactive-form-validation.component.html',
-  styleUrl: './reactive-form-validation.component.css',
+  styleUrls: ['./reactive-form-validation.component.css'],
 })
 export class ReactiveFormValidationComponent implements CanComponentDeactivate {
   userForm: FormGroup;
@@ -59,12 +60,32 @@ export class ReactiveFormValidationComponent implements CanComponentDeactivate {
         noNumbersValidator,
         capitalizedFirstLetterValidator,
       ]),
-      email: new FormControl('', [Validators.required, customEmailValidator()]),
+      emails: new FormArray([]),
       city: new FormControl('', [Validators.required, noNumbersValidator]),
       state: new FormControl('', [Validators.required, noNumbersValidator]),
       zipCode: new FormControl('', [Validators.required, zipCodeValidator]),
       isAgree: new FormControl(false, Validators.requiredTrue),
     });
+    this.addEmailField();
+  }
+
+  addEmailField() {
+    if (this.emails.length < 2) {
+      const emailControl = new FormControl('', [
+        Validators.required,
+        customEmailValidator(),
+      ]);
+      this.emails.push(emailControl);
+    }
+  }
+  removeEmailField(index: number): void {
+    if (this.emails.length > 1) {
+      this.emails.removeAt(index);
+    }
+  }
+
+  get emails(): FormArray {
+    return this.userForm.get('emails') as FormArray;
   }
 
   onSubmit() {

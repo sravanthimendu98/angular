@@ -35,8 +35,8 @@ export function capitalizedFirstLetterValidator(
 
 // Custom Email Validator
 export function customEmailValidator(): ValidatorFn {
-  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   return (control: AbstractControl): ValidationErrors | null => {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     const isValid = emailRegex.test(control.value);
     return isValid ? null : { invalidEmail: true };
   };
