@@ -39,12 +39,6 @@ export class ReactiveFormValidationComponent implements CanComponentDeactivate {
   public formName = 'Reactive form validation';
   isFormSubmitted: boolean = false;
 
-  canDeactivate(): boolean {
-    return confirm(
-      'Do you want to leave the page? Unsaved changes may be lost.'
-    );
-  }
-
   constructor(
     private _formDataService: FormDataService,
     private _router: Router
@@ -95,5 +89,11 @@ export class ReactiveFormValidationComponent implements CanComponentDeactivate {
       this._formDataService.setFormData(validForm);
       this._router.navigate(['/getFormData']);
     }
+  }
+
+  canDeactivate(): boolean {
+    return confirm(
+      'Do you want to leave the page? Unsaved changes may be lost.'
+    );
   }
 }
